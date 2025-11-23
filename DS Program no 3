@@ -1,0 +1,191 @@
+Program 3: Menu-driven program for a Singly Linked List (SLL) with the following operations
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define a node structure
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* head = NULL;   // Initially list is empty
+
+// Function to insert a node at the end (changed)
+void insertAtEnd(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = NULL;
+
+    if (head == NULL) {
+        head = newNode;
+    } else {
+        struct Node* temp = head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+    printf("%d inserted at end.\n", value);
+}
+
+// Function to delete a node from the end
+void deleteFromEnd() {
+    if (head == NULL) {
+        printf("List is empty. Cannot delete.\n");
+        return;
+    }
+    if (head->next == NULL) {
+        printf("%d deleted from end.\n", head->data);
+        free(head);
+        head = NULL;
+        return;
+    }
+    struct Node* temp = head;
+    struct Node* prev = NULL;
+    while (temp->next != NULL) {
+        prev = temp;
+        temp = temp->next;
+    }
+    printf("%d deleted from end.\n", temp->data);
+    prev->next = NULL;
+    free(temp);
+}
+
+// Function to reverse the list (in-place)
+void reverseList() {
+    struct Node *prev = NULL, *current = head, *next = NULL;
+    while (current != NULL) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    head = prev;
+    printf("List reversed.\n");
+}
+
+// Function to display the list
+void display() {
+    if (head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+    printf("Linked List: ");
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+// Main program with menu
+int main() {
+    int choice, value;
+    while (1) {
+        printf("\n--- Singly Linked List Menu (Modified) ---\n");
+        printf("1. Insert at End\n");
+        printf("2. Delete from End\n");
+        printf("3. Display\n");
+        printf("4. Reverse List\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        if (scanf("%d", &choice) != 1) { // simple input validation
+            printf("Invalid input. Exiting.\n");
+            break;
+        }
+
+        switch (choice) {
+            case 1:
+                printf("Enter value to insert: ");
+                scanf("%d", &value);
+                insertAtEnd(value);
+                break;
+            case 2:
+                deleteFromEnd();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                reverseList();
+                break;
+            case 5:
+                exit(0);
+            default:
+                printf("Invalid choice! Try again.\n");
+        }
+    }
+    return 0;
+}
+
+Output:
+
+--- Singly Linked List Menu (Modified) ---
+1. Insert at End
+2. Delete from End
+3. Display
+4. Reverse List
+5. Exit
+Enter your choice: 1
+Enter value to insert: 20
+20 inserted at end.
+
+--- Singly Linked List Menu (Modified) ---
+1. Insert at End
+2. Delete from End
+3. Display
+4. Reverse List
+5. Exit
+Enter your choice: 1
+Enter value to insert: 30
+30 inserted at end.
+
+--- Singly Linked List Menu (Modified) ---
+1. Insert at End
+2. Delete from End
+3. Display
+4. Reverse List
+5. Exit
+Enter your choice: 1
+Enter value to insert: 25
+25 inserted at end.
+
+--- Singly Linked List Menu (Modified) ---
+1. Insert at End
+2. Delete from End
+3. Display
+4. Reverse List
+5. Exit
+Enter your choice: 3
+Linked List: 20 -> 30 -> 25 -> NULL
+
+--- Singly Linked List Menu (Modified) ---
+1. Insert at End
+2. Delete from End
+3. Display
+4. Reverse List
+5. Exit
+Enter your choice: 4
+List reversed.
+
+--- Singly Linked List Menu (Modified) ---
+1. Insert at End
+2. Delete from End
+3. Display
+4. Reverse List
+5. Exit
+Enter your choice: 3
+Linked List: 25 -> 30 -> 20 -> NULL
+
+--- Singly Linked List Menu (Modified) ---
+1. Insert at End
+2. Delete from End
+3. Display
+4. Reverse List
+5. Exit
+Enter your choice: 5
+
+
+=== Code Execution Successful ===
