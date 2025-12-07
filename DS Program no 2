@@ -1,4 +1,52 @@
 Program 2 
+Algorithm: 
+1. Initialization
+Define a constant MAX as the maximum size of the queue.
+Create an array queue[MAX].
+Set front = -1, rear = -1 (indicating empty queue).
+
+2. Enqueue (Insert element)
+Algorithm:
+Check if queue is full:
+Condition: (front == 0 AND rear == MAX-1) OR (front == rear + 1)
+If true → Print Overflow and exit.
+Else:
+If front == -1 → (first insertion) set front = 0 and rear = 0.
+Else if rear == MAX - 1 → set rear = 0 (wrap-around).
+Else → rear = rear + 1.
+Insert value at queue[rear].
+Print "value enqueued".
+
+3. Dequeue (Remove element)
+Algorithm:
+Check if queue is empty:
+Condition: front == -1
+If true → Print Underflow and exit.
+Else:
+Print "queue[front] dequeued".
+If front == rear → (only one element was present) set front = -1 and rear = -1.
+Else if front == MAX - 1 → set front = 0 (wrap-around).
+Else → front = front + 1.
+
+4. Display (Show all elements)
+Algorithm:
+If queue is empty (front == -1) → Print "Queue is empty".
+Else:
+If front <= rear:
+Print elements from queue[front] to queue[rear].
+Else (wrap-around happened):
+Print elements from queue[front] to queue[MAX-1].
+Then print elements from queue[0] to queue[rear].
+
+5. Main Menu
+Repeat until Exit:
+Print choices:
+1 → Enqueue
+2 → Dequeue
+3 → Display
+4 → Exit
+Input choice.
+Call respective function.
 
 #include <stdio.h>
 #define MAX 5   // Maximum size of the circular queue
