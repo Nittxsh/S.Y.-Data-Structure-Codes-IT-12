@@ -1,5 +1,29 @@
 Program 6: Write programs for the implementation of graph traversals by applying BFS.
 
+Algorithm for BFS: 
+
+Algorithm: BFS(G, start)
+Input: 
+    G = (V, E)  → graph represented by adjacency matrix or adjacency list
+    start       → starting vertex
+
+Output: 
+    All vertices reachable from 'start' in BFS order
+
+Steps:
+1. Initialize an array visited[V] ← 0  // mark all vertices as unvisited
+2. Create an empty queue Q
+3. Enqueue(start)
+4. Mark visited[start] ← 1
+5. Repeat while Q is not empty:
+       a. v ← Dequeue(Q)
+       b. Process v (print v)
+       c. For each vertex u adjacent to v: 
+              If visited[u] = 0 then
+                   Enqueue(u)
+                   visited[u] ← 1
+6. End While
+
 #include <stdio.h>
 #define MAX 10
 
