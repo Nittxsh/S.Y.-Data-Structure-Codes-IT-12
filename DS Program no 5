@@ -1,5 +1,88 @@
 Program 5: Implementation of Circular Linked List by menu-driven C program with the basic operations
 
+Algorithm: 
+1. Initialization
+Define a node with two fields:
+data → stores value
+next → pointer to next node
+Initialize head = NULL (list empty).
+
+2. Insert at Beginning
+Algorithm:
+Create a new node newNode.
+Set newNode->data = value.
+If head == NULL:
+Set head = newNode.
+Set newNode->next = head. (only one node, points to itself)
+Else:
+Traverse list to find last node (last->next == head).
+Set newNode->next = head.
+Set last->next = newNode.
+Update head = newNode.
+Time Complexity: O(n) (because of traversal to last node).
+
+3. Insert at End
+Algorithm:
+Create a new node newNode.
+Set newNode->data = value.
+If head == NULL:
+Set head = newNode.
+Set newNode->next = head.
+Else:
+Traverse list to find last node (last->next == head).
+Set last->next = newNode.
+Set newNode->next = head.
+Time Complexity: O(n).
+
+4. Delete from Beginning
+Algorithm:
+If head == NULL: Print “List empty” and exit.
+If head->next == head (only one node):
+Free head.
+Set head = NULL.
+Else:
+Find last node (last->next == head).
+Store pointer to current head.
+Set head = head->next.
+Set last->next = head.
+Free old head.
+Time Complexity: O(n) (because of traversal to last node).
+
+5. Delete from End
+Algorithm:
+If head == NULL: Print “List empty” and exit.
+If head->next == head (only one node):
+Free head.
+Set head = NULL.
+Else:
+Traverse list keeping track of previous node.
+Stop when temp->next == head (last node).
+Set prev->next = head.
+Free last node.
+Time Complexity: O(n).
+
+6. Display
+Algorithm:
+If head == NULL: Print “List empty”.
+Else:
+Start from head.
+Do: Print temp->data, then move temp = temp->next.
+Continue until temp == head.
+Time Complexity: O(n).
+
+7. Main Menu (Driver Program)
+Repeat until Exit:
+Print menu:
+Insert at Beginning
+Insert at End
+Delete from Beginning
+Delete from End
+Display
+Exit
+Input choice.
+Perform corresponding operation.
+If choice == 6, terminate program.
+
 #include <stdio.h>
 #include <stdlib.h>
 
