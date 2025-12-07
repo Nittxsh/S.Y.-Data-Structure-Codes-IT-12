@@ -1,5 +1,22 @@
 prog no 9 Tower of Hanoi
 
+Algorithm TowerOfHanoi(n, from, to, aux):
+
+1. If n == 0:
+       return
+
+2. TowerOfHanoi(n−1, from, aux, to)
+
+3. Print "Move disk n from rod from to rod to"
+
+4. TowerOfHanoi(n−1, aux, to, from)
+
+Algorithm Main:
+
+1. Read N
+2. Call TowerOfHanoi(N, 'A', 'C', 'B')
+3. End
+
 #include <stdio.h>
 
 void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod) {
