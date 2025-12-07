@@ -1,5 +1,71 @@
 Program 4: Menu driven program for implementation of Binary tree by using following methods: Insert, Delete, Search, and Display.
 
+Algorithm: 
+1. Initialization
+Define a Node structure with:
+key (integer data),
+left (pointer to left child),
+right (pointer to right child).
+Initialize root = NULL (tree is empty).
+
+2. Insert(key)
+Algorithm:
+If root == NULL → create new node with key and assign to root.
+Else:
+Compare key with current node.
+If key < node->key → go to left subtree.
+If key > node->key → go to right subtree.
+If key == node->key → print "Duplicate not allowed".
+Repeat recursively until correct empty position is found, then insert new node.
+Time Complexity: O(h), where h = height of tree.
+
+3. Search(key)
+Algorithm:
+If node == NULL → return "Not found".
+If key == node->key → return "Found".
+If key < node->key → search in left subtree.
+Else → search in right subtree.
+Time Complexity: O(h).
+
+4. Delete(key)
+Algorithm:
+If node == NULL → return (key not found).
+If key < node->key → move to left subtree.
+Else if key > node->key → move to right subtree.
+Else (key found):
+Case 1: Node has no child (leaf) → Free node, return NULL.
+Case 2: Node has one child → Return the non-NULL child (left or right) and free node.
+Case 3: Node has two children:
+Find the inorder successor (minimum node in right subtree).
+Copy its key into current node.
+Recursively delete that inorder successor from right subtree.
+Time Complexity: O(h).
+
+5. Display (Tree Traversals)
+Inorder (Left → Root → Right): gives elements in sorted order.
+Preorder (Root → Left → Right): useful for copying tree.
+Postorder (Left → Right → Root): useful for deletion/freeing.
+Algorithm (example: Inorder):
+If node == NULL → return.
+Recur on left subtree.
+Print node->key.
+Recur on right subtree.
+
+6. Main Menu (Driver Program)
+Repeat until user selects Exit:
+Print options:
+1 → Insert
+2 → Delete
+3 → Search
+4 → Display
+5 → Exit
+Read choice.
+If choice = 1 → call insert(key).
+If choice = 2 → call delete(key).
+If choice = 3 → call search(key).
+If choice = 4 → call selected traversal function.
+If choice = 5 → terminate program.
+
 #include <stdio.h>
 #include <stdlib.h>
 
